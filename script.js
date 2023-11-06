@@ -1,4 +1,10 @@
 const Form = document.querySelector('form');
+const newGame = document.querySelector('#new-game');
+const resetGame = document.querySelector('#reset-game')
+newGame.addEventListener( 'click' , () => {
+  location.reload();
+})
+
 const winningConditions = [
   [0,1,2],
   [3,4,5],
@@ -29,12 +35,25 @@ const initializeGame = (data) => {
  initializeVariables(data);
  addEventListenerToGameBoard(data);
 }
-
+const resetDom = () => {
+  document.querySelectorAll('.box').forEach( box => {
+    box.className = 'box'
+    box.textContent = ''
+  }
+   
+   );
+}
 const addEventListenerToGameBoard = (data) => {
   document.querySelectorAll('.box').forEach( box => 
     box.addEventListener('click' , (event) => {
     playMove( event.target , data);
   }))
+  resetGame.addEventListener( 'click' , () => {
+   initializeVariables(data);
+   resetDom();
+   adjustDom("displayTurn", `${data.playerOneName}'s turn`);
+
+  })
 }
 const playMove = (box , data) => {
   if(data.gameOver || data.round > 8){
@@ -49,7 +68,7 @@ const playMove = (box , data) => {
   data.round++
  
   if(endConditions(data)){
-   return
+    return
   }
   
   if(data.choice === 0){
@@ -58,6 +77,14 @@ const playMove = (box , data) => {
   else if ( data.choice === 1){
     easyAiMove(data);
     data.currentPlayer = 'X';
+  }
+  else if ( data.choice === 2) {
+    changePlayer(data);
+    hardAiMove(data);
+    if(endConditions(data)){
+      return
+    }
+    changePlayer(data);
   }
 };
 
@@ -121,4 +148,78 @@ const easyAiMove = (data) => {
     return;
   }
   changePlayer(data);
+}
+
+const hardAiMove = (data) => {
+  data.round++
+  const move = minimax(data , "O").index;
+  data.board[move] =  data.player2;
+  let box = document.getElementById(`${move}`);
+  box.textContent = data.player2;
+  box.classList.add('player2');
+}
+
+const minimax = (data , player) => {
+  let availableSpace = data.board.filter(
+    (space) => space !== "X" && space !== "O"
+  )
+  if(checkWinner(data , data.player1)){
+    return {
+      score : -100,
+    }
+  }
+  else if ( checkWinner ( data , data.player2)){
+    return {
+      score : 100,
+    }
+  }
+  else if( availableSpace.length === 0 ){
+    return {
+      score : 0,
+    }
+  }
+  const potentialMoves = [];
+  for (let i = 0 ; i< availableSpace.length; i++){
+   let move= {};
+   move.index = data.board[availableSpace[i]];
+   data.board[availableSpace[i]] = player;
+   if(player === data.player2){
+    move.score = minimax(data, data.player1).score
+   }
+   else{
+    move.score = minimax(data , data.player2 ).score;
+   }
+   data.board[availableSpace[i]] = move.index;
+   potentialMoves.push(move);
+  }
+
+  let bestMove = 0;
+  if(player === data.player2){
+
+    let bestScore = -10000;
+
+    for(let i = 0; i < potentialMoves.length; i++) {
+
+      if (potentialMoves[i].score > bestScore)
+       {
+        bestScore = potentialMoves[i].score;
+        bestMove = i;
+        }
+     }
+   } 
+  else if(player === data.player1){
+
+    let bestScore = 10000;
+
+    for(let i = 0; i < potentialMoves.length; i++) {
+
+      if (potentialMoves[i].score < bestScore)
+       {
+        bestScore = potentialMoves[i].score;
+        bestMove = i;
+        }
+     }
+    }
+    data.gameOver = false;
+    return potentialMoves[bestMove];
 }
