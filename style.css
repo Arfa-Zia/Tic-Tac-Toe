@@ -1,9 +1,3 @@
-:root{
-    --color-1: #79155B;
-    --color-2: #c2337388;
-    --color-3: #F6635C;
-    --color-4: #FFBA86;
-}
 *{
     margin: 0px;
     padding: 0px;
@@ -25,73 +19,43 @@ body{
 }
 .box{
     background-color: rgba(255, 255, 255, 0);
-    font-size: 40px;
-    font-family: 'Yellowtail', 'Times New Roman', Times, serif;
+    font-size: 45px;
+    font-family: Teko, 'Times New Roman', Times, serif;
     text-align: center;
     border: 0.2rem solid #fff;
     border-radius: 15px;
-    padding: 20px 25px 20px 20px;
+    padding: 15px;
     box-shadow: 
     0 0 .2rem #fff,
     0 0 .2rem #fff,
-    0 0 2rem #bc13fe,
-    0 0 0.8rem #bc13fe,
-    0 0 2.8rem #bc13fe,
-    inset 0 0 1.3rem #bc13fe; 
+    0 0 2rem #025aff,
+    0 0 0.8rem #025aff,
+    0 0 2.8rem #025aff,
+    inset 0 0 1.3rem #025aff; 
     color: #fff;
-    text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px #bc13fe,
-    0 0 82px #bc13fe,
-    0 0 92px #bc13fe,
-    0 0 102px #bc13fe,
-    0 0 151px #bc13fe;
     transition: all .2s ease-in-out;
  }
-.box:hover , h1:hover , .buttons > button:hover , .displayTurn:hover{
+.box:hover ,.buttons > button:hover{
     transform: scale(1.1);
 }
 h1{
     text-align: center;
-    margin-top: 10px;
     font-size: 80px;
-    font-family: 'Yellowtail' , 'Times New Roman', Times, serif;
-    font-weight: 70; 
+    font-family: Teko , 'Times New Roman', Times, serif; 
     font-style: italic;  
     color: #fff;
-    text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #5271ff,
-        0 0 82px #5271ff,
-        0 0 92px #5271ff,
-        0 0 102px #5271ff,
-        0 0 151px #5271ff;
-    transition: all .2s ease-in-out;
-
+    padding: 5px;
+    padding-bottom: none;
 }
 
 .displayTurn{
     text-align: center;
-    margin-top: 10px;
-    font-size: 40px;
-    font-family: 'Yellowtail' , 'Times New Roman', Times, serif;
-    font-weight: 70; 
+    font-size: 45px;
+    font-family: Teko , 'Times New Roman', Times, serif;
     font-style: italic;  
-    color: #fff;
-    text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #5271ff,
-        0 0 82px #5271ff,
-        0 0 92px #5271ff,
-        0 0 102px #5271ff,
-        0 0 151px #5271ff;
-    transition: all .2s ease-in-out;
+    color: #ffffff;
+    padding: 5px;
+    padding-top: none;
 
 }
 .buttons{
@@ -100,58 +64,40 @@ h1{
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin: 20px;
+    margin: 0px 10px 25px 10px;
 }
 .buttons > button{
     text-align: center;
     font-size: 30px;
-    font-family: 'Yellowtail' , 'Times New Roman', Times, serif;
+    font-family: Teko , 'Times New Roman', Times, serif;
     font-weight: 70; 
     font-style: italic;  
     color: #fff;
     background-color: #ffffff00;
-    text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #5271ff,
-        0 0 82px #5271ff,
-        0 0 92px #5271ff,
-        0 0 102px #5271ff,
-        0 0 151px #5271ff;
     border: none;
     transition: all .2s ease-in-out;
 
 }
 form{
-    background-color: rgb(47, 25, 75);
+    background-color: rgb(7, 37, 77);
     font-size: 30px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
-    font-family: 'Yellowtail', 'Times New Roman', Times, serif;
+    font-family: Teko, 'Times New Roman', Times, serif;
     border: 0.2rem solid #fff;
     border-radius: 15px;
     padding: 40px;
     box-shadow: 
     0 0 .2rem #fff,
     0 0 .2rem #fff,
-    0 0 2rem #bc13fe,
-    0 0 0.8rem #bc13fe,
-    0 0 2.8rem #bc13fe,
-    inset 0 0 1.3rem #bc13fe; 
+    0 0 2rem #064392,
+    0 0 0.8rem #064392,
+    0 0 2.8rem #064392,
+    inset 0 0 1.3rem #064392; 
     color: #fff;
-    text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px #bc13fe,
-    0 0 82px #bc13fe,
-    0 0 92px #bc13fe,
-    0 0 102px #bc13fe,
-    0 0 151px #bc13fe;
 }
 #form-dialog{
     position: absolute;
@@ -165,18 +111,11 @@ form{
 }
 input{
     margin-left: 20px;
-    font-family: 'Yellowtail', 'Times New Roman', Times, serif;
+    font-family: Teko, 'Times New Roman', Times, serif;
     border: 0.2rem solid #fff;
     border-radius: 15px;
     padding-left: 10px;
-    box-shadow: 
-    0 0 .2rem #fff,
-    0 0 .2rem #fff,
-    0 0 2rem #bc13fe,
-    0 0 0.8rem #bc13fe,
-    0 0 2.8rem #bc13fe,
-    inset 0 0 1.3rem #bc13fe; 
-    color: #6a0692;
+    color: #064392;
     font-size: 25px;
 }
 input:focus{
@@ -189,20 +128,11 @@ input[type='radio']{
 form > button{
     text-align: center;
     font-size: 30px;
-    font-family: 'Yellowtail' , 'Times New Roman', Times, serif;
+    font-family: Teko , 'Times New Roman', Times, serif;
     font-weight: 70; 
     font-style: italic;  
     color: #fff;
-    background-color: #6a069279;
-    text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #5271ff,
-        0 0 82px #5271ff,
-        0 0 92px #5271ff,
-        0 0 102px #5271ff,
-        0 0 151px #5271ff;
+    background-color: #062b9279;
     border: 2px solid white;
     align-self: center;
     padding: 13px;
@@ -210,8 +140,8 @@ form > button{
     box-shadow: 
     0 0 .2rem #fff,
     0 0 .2rem #fff,
-    0 0 2rem #bc13fe,
-    0 0 0.8rem #bc13fe,
-    0 0 2.8rem #bc13fe,
-    inset 0 0 1.3rem #bc13fe; 
+    0 0 2rem #064392,
+    0 0 0.8rem #064392,
+    0 0 2.8rem #064392,
+    inset 0 0 1.3rem #064392; 
 }
