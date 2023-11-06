@@ -1,6 +1,14 @@
 const Form = document.querySelector('form');
-const dialog = document.querySelector('dialog');
-
+const winningConditions = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [2,4,6] 
+]
 Form.addEventListener( 'submit' , () => { 
   const formData = new FormData(Form);
   const data = Object.fromEntries(formData);
@@ -17,6 +25,7 @@ const initializeVariables = (data) => {
   data.gameOver  = false;
 }
 const initializeGame = (data) => {
+  adjustDom("displayTurn", `${data.playerOneName}'s turn`);
  initializeVariables(data);
  addEventListenerToGameBoard(data);
 }
@@ -38,5 +47,58 @@ const playMove = (box , data) => {
   box.textContent = data.currentPlayer;
   box.classList.add(data.currentPlayer === 'X' ? 'player1' : 'player2')
   data.round++
-  console.log( box , data)
-}
+ 
+  if(endConditions(data)){
+   return
+  }
+  else {
+    changePlayer(data);
+  }
+};
+
+const endConditions = (data) => {
+  //3 potential options,
+  //winner
+  //tie
+  //game not over yet
+  if (checkWinner(data, data.currentPlayer)) {
+    //adjust the dom to reflect win
+    let winnerName =
+      data.currentPlayer === "X" ? data.playerOneName : data.playerTwoName;
+    adjustDom("displayTurn", winnerName + " has won the game");
+    return true;
+  } else if (data.round === 9) {
+    adjustDom("displayTurn", "It's a Tie!");
+    data.gameOver = true;
+    //adjust the dom to reflect tie
+    return true;
+  }
+  return false;
+};
+
+const checkWinner = (data, player) => {
+  let result = false;
+  winningConditions.forEach((condition) => {
+    if (
+      data.board[condition[0]] === player &&
+      data.board[condition[1]] === player &&
+      data.board[condition[2]] === player
+    ) {
+      result = true;
+    }
+  });
+  return result;
+};
+
+const adjustDom = (className, textContent) => {
+  const elem = document.querySelector(`.${className}`);
+  elem.textContent = textContent;
+};
+
+const changePlayer = (data) => {
+  data.currentPlayer = data.currentPlayer === "X" ? "O" : "X";
+  //adjust the dom
+  let displayTurnText =
+    data.currentPlayer === "X" ? data.playerOneName : data.playerTwoName;
+  adjustDom("displayTurn", `${displayTurnText}'s turn`);
+};
