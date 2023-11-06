@@ -4,10 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia|Yellowtail|Titillium Web">
     <script src="script.js" defer></script>
     <title>Tic Tac Toe</title>
 </head>
 <body>
-    <h1>Tic Tac Toe</h1>
+
+    <div class="content">
+
+        <div id="header">
+
+            <h1 class="title">Tic Tac Toe</h1>
+            <p class="displayTurn">Player 1's turn</p>
+            <div class="buttons">
+                <button id="reset-game" class="btn">Reset Game</button>
+                <button id="new-game" class="btn">New Game</button>
+            </div>
+            
+        </div>
+        
+        <div class="gameWrapper">
+        <div class="gameboard">
+            <div class="box" id="0">O</div>
+            <div class="box" id="1">X</div>
+            <div class="box" id="2"></div>
+            <div class="box" id="3"></div>
+            <div class="box" id="4"></div>
+            <div class="box" id="5"></div>
+            <div class="box" id="6"></div>
+            <div class="box" id="7"></div>
+            <div class="box" id="8"></div>
+        </div>
+        </div>
+        <!-- <div class="model">
+            <dialog open id="result-dialog">
+                <span class="close">this is me</span>
+                <p  class="result">you win</p>
+            </dialog>
+        </div> -->
+
+            <div class="model" >
+                <dialog id="form-dialog" open>
+                    <form >
+                        <label for="playerOne">X
+                        <input type="text" name="playerOne" id="playerOne" placeholder="Player 1's name" required>
+                        </label>
+                        <label for="playerTwo">O
+                        <input type="text"name="playerTwo" id="playerTwo" placeholder="Player 2's name" required>
+                        </label>
+                        <label for="man">Human Vs Human:
+                        <input type="radio" name="choice" id="man" value="0" required>
+                        </label>
+                        <label for="ai">Human Vs Easy AI:
+                        <input type="radio" name="choice" id="ai" value="1" required>
+                        </label>
+                        <label for="ai">Human Vs Hard AI:
+                        <input type="radio" name="choice" id="aihard" value="2" required>
+                        </label>
+                        <button formmethod="dialog" id="submit-form">Start Game</button>
+                    </form>
+                </dialog>
+            </div>
+
+    </div>
+
 </body>
 </html>
