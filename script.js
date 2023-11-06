@@ -18,5 +18,25 @@ const initializeVariables = (data) => {
 }
 const initializeGame = (data) => {
  initializeVariables(data);
- console.log(data);
+ addEventListenerToGameBoard(data);
+}
+
+const addEventListenerToGameBoard = (data) => {
+  document.querySelectorAll('.box').forEach( box => 
+    box.addEventListener('click' , (event) => {
+    playMove( event.target , data);
+  }))
+}
+const playMove = (box , data) => {
+  if(data.gameOver || data.round > 8){
+    return;
+  }
+  if(data.board[box.id] == 'X' || data.board[box.id] == 'O'){
+    return;
+  }
+  data.board[box.id] = data.currentPlayer;
+  box.textContent = data.currentPlayer;
+  box.classList.add(data.currentPlayer === 'X' ? 'player1' : 'player2')
+  data.round++
+  console.log( box , data)
 }
